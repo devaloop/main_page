@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
           height: 16,
           width: 16,
         ),
-        appIconOnTap: () {},
+        onTapAppIconAndName: () {},
+        onTapUserInfo: () {},
         userInfo: 'user@gmail.com',
         mainMenus: const [
           MainMenu(

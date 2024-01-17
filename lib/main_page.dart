@@ -8,13 +8,15 @@ class MainPage extends StatefulWidget {
     required this.appName,
     required this.userInfo,
     this.appIcon,
-    required this.appIconOnTap,
+    this.onTapAppIconAndName,
+    this.onTapUserInfo,
     required this.mainMenus,
   });
 
   final String appName;
   final String userInfo;
-  final Function() appIconOnTap;
+  final Function()? onTapAppIconAndName;
+  final Function()? onTapUserInfo;
   final Widget? appIcon;
   final List<MainMenu> mainMenus;
 
@@ -151,12 +153,14 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           children: [
             Column(
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    InkWell(
-                      onTap: () => widget.appIconOnTap.call(),
-                      child: Center(
+                InkWell(
+                  onTap: widget.onTapAppIconAndName == null
+                      ? null
+                      : () => widget.onTapAppIconAndName!.call(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Center(
                         child: Container(
                           margin: const EdgeInsets.all(15),
                           height: 24,
@@ -164,15 +168,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                           child: widget.appIcon ?? const Icon(Icons.apps_sharp),
                         ),
                       ),
-                    ),
-                    RotatedBox(
-                      quarterTurns: 1,
-                      child: Text(widget.appName),
-                    ),
-                    const SizedBox(
-                      height: 7.5,
-                    ),
-                  ],
+                      RotatedBox(
+                        quarterTurns: 1,
+                        child: Text(widget.appName),
+                      ),
+                      const SizedBox(
+                        height: 7.5,
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
                   height: 1,
@@ -215,8 +219,24 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                     height: 15 + 15 + 24,
                     child: Row(
                       children: [
-                        Text(
-                          widget.userInfo,
+                        InkWell(
+                          onTap: widget.onTapUserInfo == null
+                              ? null
+                              : () => widget.onTapUserInfo!.call(),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 7.5,
+                                ),
+                                child: Text(
+                                  widget.userInfo,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           width: 7.5,

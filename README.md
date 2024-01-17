@@ -4,7 +4,7 @@ Main page: Main menu, sub menus and contents of each menu.
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:main_page/main_page.dart';
+import 'package:devaloop_main_page/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
           height: 16,
           width: 16,
         ),
-        appIconOnTap: () {},
+        onTapAppIconAndName: () {},
+        onTapUserInfo: () {},
         userInfo: 'user@gmail.com',
         mainMenus: const [
           MainMenu(

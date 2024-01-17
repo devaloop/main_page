@@ -1,6 +1,6 @@
 name: devaloop_main_page
 description: "Main page: Main menu, sub menus and contents of each menu.."
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/devaloop/main_page
 
 environment:
@@ -14,7 +14,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
